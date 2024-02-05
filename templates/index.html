@@ -24,6 +24,7 @@
 
         {% for x, y in dict_movie.items() %}
             <tr>
+
                 <td>{{ x }}</td>
                 <td>{{ y }}</td>
                 {% if y > 3 %}
@@ -31,6 +32,7 @@
                 {% else %}
                     <td>Long</td>
                 {% endif %}
+                
             </tr>    
         {% endfor %}         
 
