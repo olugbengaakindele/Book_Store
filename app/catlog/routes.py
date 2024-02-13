@@ -1,8 +1,11 @@
 # app/catelog/routes
-
+from flask import render_template
 from app.catlog import cat
-
+from app import db
+from app.catlog.models import Publication, Books
 
 @cat.route("/catelog")
 def catelog():
-    return "I made it"
+    books =Books.query.all()
+
+    return render_template("cat.html", books = books )
