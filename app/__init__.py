@@ -3,11 +3,14 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-# from flask_login import LoginManager
+from flask_login import LoginManager
 
-# login_manager = LoginManager()
+login_manager = LoginManager()
+login_manager.login_view = "auth.do_the_login"
+login_manager.session_protection= "strong"
 bcrypt = Bcrypt()
 db = SQLAlchemy()
+
 
 def create_app(env):
 
@@ -23,7 +26,7 @@ def create_app(env):
     from app.catlog import cat
     myapp.register_blueprint(cat)
 
-    # login_manager.init_app(myapp)
+    login_manager.init_app(myapp)
     bcrypt.init_app(myapp)
 
     return myapp

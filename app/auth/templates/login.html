@@ -25,20 +25,29 @@
     {% endif %}
   {% endwith %}
   
-  <form action="/login" method = "post">
+  <form action="/login" method = "post" class ="w-50 mx-auto">
     {{ form.hidden_tag() }}
     
-    <div class="lg-3">
-        <label for="exampleFormControlInput2" class="form-label">{{form.email.label}}</label>
-        {{ form.email }}
+       
+    <div class="form-group">
+      {{form.email.label}}
+      {{ form.email(class="form-control") }}
+      
     </div>
-    <div class="lg-3">
-        <label for="exampleFormControlInput3" class="form-label">{{form.password.label}}</label>
-        {{ form.password }}
-    </div>
-    <div class="lg-3">
-        {{ form.submit(class ='btn btn-primary') }}
-    </div>
+    <br>
+    <div class="form-group">
+      {{form.password.label}}
+      {{ form.password (class="form-control") }}      
+    </div>  
+    <br>
+    <div class="form-group">
+      
+      {{ form.stayloggedin }} {{form.stayloggedin.label}}     
+    </div>  
+    <br>
+    <div class="form-group">
+      {{ form.submit(class ='btn btn-primary form-control w-25') }}
+    </div>  
     
   </form>
 

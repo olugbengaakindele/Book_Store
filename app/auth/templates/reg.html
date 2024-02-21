@@ -20,25 +20,24 @@
       {{form.name.label}}
       {{ form.name (class="form-control")}}
     </div>
-    
+    <br>
     <div class="form-group">
       {{form.email.label}}
       {{ form.email(class="form-control") }}
-      <!-- {% for err in  form.email.errors %} 
-        <h6 class="alert alert-error" >{{ err }}</h6></div>
-      {% endfor %} -->
+      {% for err in  form.email.errors %} 
+        <h6 class="text-danger">{{ err }}</h6>
+      {% endfor %}
     </div>
-
+    <br>  
     <div class="form-group">
       {{form.password.label}}
-      {{ form.password (class="form-control")}}
-      
+      {{ form.password (class="form-control") }}      
+    </div>  
+    <br>
+    <div class="form-group">
+      {{ form.submit(class ='btn btn-primary form-control') }}
     </div>  
 
-    <div class="form-group">
-      {{ form.submit(class ='btn btn-danger') }}
-     
-    </div>  
   </form>
 
 {% endblock body %}

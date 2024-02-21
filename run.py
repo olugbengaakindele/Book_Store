@@ -8,7 +8,7 @@ if __name__ =="__main__":
     with flask_app.app_context():
         db.create_all()
 
-        if not Users.query.filter_by(name = "Oluh").first():
-            Users.create_user("Oluh","akin@gmail.com", "secret")
+        if not Users.query.filter_by(email = "akin@gmail.com").first():
+            Users.create_user("Olugbenga","akin@gmail.com", "secret")
 
     flask_app.run(debug=True)
