@@ -1,8 +1,9 @@
 # app/auth/routes
-from app.auth.forms import RegistrationForm, LoginForm
+from app.auth.forms import RegistrationForm, LoginForm, PublisherForm
 from app.auth import auth
 from flask import render_template, request, flash, redirect, url_for
 from app.auth.models import Users
+from app.catlog.models import Publication
 from app import bcrypt
 from flask_login import  login_user, logout_user,login_required, current_user
 
@@ -32,7 +33,7 @@ def register():
         flash("You have successfully created an account with us", "info")
         return redirect(url_for("auth.do_the_login"))
     
-    return render_template("reg.html", form = form , name = name , email = email , title ="Ope")
+    return render_template("reg.html", form = form , name = name , email = email , title ="Register")
 
 
 @auth.route("/login", methods= ['GET','POST'])
@@ -60,6 +61,33 @@ def do_the_login():
     
 
     return render_template("login.html", form = form , name = name , email = email)
+
+
+@auth.route("/admin/publisher", methods= ['GET','POST'])
+def admin_publisher():
+    form = PublisherForm()
+    if form.validate_on_submit():
+        name = request.form["name"]
+        user = Publication.create_publisher(name)
+        flash("You have created a publisher")
+        return redirect(url_for("auth.admin_publisher"))
+
+    return render_template("admin.html" , form = form)
+
+
+@auth.route("/admin/books", methods= ['GET','POST'])
+def admin_books():
+    form = PublisherForm()
+    if form.validate_on_submit():
+        name = request.form["name"]
+        user = Publication.create_publisher(name)
+        flash("You have created a publisher")
+        return redirect(url_for("auth.admin_books"))
+
+    return render_template("admin.html" , form = form)
+
+
+
 
 
 @auth.route("/logout")

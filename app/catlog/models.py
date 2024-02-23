@@ -13,9 +13,18 @@ class Publication(db.Model):
     def __init__(self, name):
         self.name = name 
 
-    def __repr__(self):
-        
+    def __repr__(self):        
         return f'You have successfullly created {self.name} in the database'
+
+    @classmethod
+    def create_publisher(cls, pub_name):
+        pub = cls(name = pub_name )
+        
+        db.session.add(pub)
+        db.session.commit()
+
+        return pub
+
 
 
 class Books(db.Model):
