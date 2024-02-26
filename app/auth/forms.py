@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField,EmailField, BooleanField
+from wtforms import DateField, SelectField,StringField, SubmitField, PasswordField,EmailField, BooleanField, IntegerField
 from wtforms.validators import DataRequired,Email,Length,ValidationError
 from app.auth.models import Users
 
@@ -31,4 +31,15 @@ class LoginForm(FlaskForm):
 
 class PublisherForm(FlaskForm):
     name = StringField("Publisher Name", validators=[DataRequired(), Length(5,100)])
+    submit  = SubmitField("Submit")
+
+
+class BookForm(FlaskForm):
+    name = StringField("Book Title", validators=[DataRequired(), Length(5,100)])
+    pages = IntegerField("Number of pages",  validators=[DataRequired()])
+    author = StringField("Book Author", validators=[DataRequired(), Length(5,100)])
+    rating = IntegerField("Average Rating (1 - 10)")
+    pub_date = DateField("Publication Date")
+    format = SelectField("Book Format", choices=[("Hard cover","Hard cover"),("Papper back","Papper back")])
+    publisher = SelectField("Publisher", choices=[])
     submit  = SubmitField("Submit")

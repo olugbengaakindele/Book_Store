@@ -35,7 +35,42 @@
       
     </div>
     <br>
-    
+    <div class="form-group">
+      {{form.author.label}}
+      {{ form.author(class="form-control") }}
+      
+    </div>
+    <br>
+    <div class="form-group">
+      {{form.pages.label}}
+      {{ form.pages(class="form-control") }}
+      
+    </div>
+    <br>
+    <div class="form-group">
+      {{form.rating.label}}
+      {{ form.rating(class="form-control") }}
+      
+    </div>
+    <br>
+    <div class="form-group">
+      {{form.pub_date.label}}
+      {{ form.pub_date(class="form-control") }}
+      
+    </div>
+    <br>
+    <div class="form-group">
+      {{form.format.label}}
+      {{ form.name(class="form-control") }}
+      
+    </div>
+    <br>
+    <div class="form-group">
+      {{form.publisher.label}}
+      {{ form.publisher(class="form-control") }}
+      
+    </div>
+    <br>
     <div class="form-group">
       {{ form.submit(class ='btn btn-primary form-control w-25') }}
     </div>  
